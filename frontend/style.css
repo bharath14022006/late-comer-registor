@@ -1,0 +1,160 @@
+/* * Late Comer Management System - Global Styles
+ * Optimized for Enterprise Security Portals
+ */
+
+ :root {
+    --primary-indigo: #4f46e5;
+    --primary-hover: #4338ca;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-800: #1e293b;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(226, 232, 240, 0.6);
+}
+
+/* Base reset & Typography */
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    background-color: var(--slate-50);
+}
+
+/* Glassmorphism Containers */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 
+                0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Form Styling - Enhanced Focus States */
+.form-input {
+    @apply w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition-all duration-200 bg-white/50 text-slate-700;
+}
+
+.form-input:focus {
+    @apply border-indigo-400 ring-4 ring-indigo-500/10 bg-white;
+}
+
+select.form-input {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Button Animations */
+.btn-primary {
+    @apply bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold transition-all duration-200 shadow-lg shadow-indigo-100 active:scale-[0.98];
+}
+
+.btn-primary:hover:not(:disabled) {
+    @apply bg-indigo-700 shadow-indigo-200 -translate-y-0.5;
+}
+
+.btn-primary:disabled {
+    @apply opacity-50 cursor-not-allowed grayscale-[0.5];
+}
+
+/* Table Enhancements */
+.entries-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.entries-table thead th {
+    @apply sticky top-0 bg-slate-50/90 backdrop-blur-md z-10;
+}
+
+.entries-table tbody tr {
+    @apply border-b border-slate-100 transition-colors;
+}
+
+.entries-table tbody tr:hover {
+    background-color: rgba(79, 70, 229, 0.02);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-300;
+}
+
+/* Micro-Interactions: Loading States */
+.spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    animation: spin 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Specialized Print Styles for Security Reports */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+        margin: 0;
+        padding: 0;
+    }
+
+    .glass-card {
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    table {
+        width: 100%;
+        border: 1px solid #eee;
+    }
+
+    th {
+        background: #f1f5f9 !important;
+        color: #1e293b !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    /* Page Header for Printed Report */
+    .print-header {
+        display: block !important;
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #4f46e5;
+    }
+}
+
+.print-header {
+    display: none;
+}
